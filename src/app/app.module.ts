@@ -15,6 +15,7 @@ import { NavComponent } from './nav/nav.component';
 import {McBreadcrumbsModule} from 'ngx-breadcrumbs';
 import {MessageService} from './common/message.service';
 import {CommentService} from './table/comment.service';
+import { DonutComponent } from './donut/donut.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {CommentService} from './table/comment.service';
     CardComponent,
     TableComponent,
     HomeComponent,
-    NavComponent
+    NavComponent,
+    DonutComponent
   ],
   imports: [
     BrowserModule,
