@@ -6,7 +6,7 @@ import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import {AppRoutes} from './app.routes';
-import {BasicCardModule, EmptyStateModule, NavigationModule, NotificationModule, TableModule} from 'patternfly-ng';
+import {BasicCardModule, EmptyStateModule, NavigationModule, NotificationModule, TableModule, ChartModule} from 'patternfly-ng';
 import {BsDropdownModule} from 'ngx-bootstrap';
 import { CardComponent } from './card/card.component';
 import { TableComponent } from './table/table.component';
@@ -37,7 +37,8 @@ import { DonutComponent } from './donut/donut.component';
     EmptyStateModule,
     TableModule,
     BasicCardModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    ChartModule
   ],
   providers: [
     MessageService,
