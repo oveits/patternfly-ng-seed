@@ -1,0 +1,62 @@
+<div *ngIf="project">
+
+  <div *ngIf="multiTenant && !customer">
+    <!-- customerName = {{customerName}}
+    customer = {{customer}}
+    project.customer = {{project.customer}} -->
+  <input id="customerName" name="customerName" class="form-control" autofocus
+    required minlength="4" appForbiddenName="undefined"
+    [(ngModel)]="project.customer" #customerName="ngModel" 
+    placeholder="Customer"  
+    pattern="[a-z][a-z0-9]+" 
+    (keyup)="project.customer = project.customer.toLowerCase()" />
+
+    <div *ngIf="customerName && customerName.invalid && (customerName.dirty || customerName.touched)"
+      class="alert alert-danger">
+      <div *ngIf="customerName.errors.pattern">
+        Customer Name must start with a lowercase letter [a-z] and can consist of lowercase letters and/or numbers
+      </div>
+      <div *ngIf="customerName.errors.required">
+        Customer Name is required.
+      </div>
+      <div *ngIf="customerName.errors.minlength">
+        Customer Name must be at least 4 characters long.
+      </div>
+    </div>
+  </div>
+
+  <input id="projectName" name="projectName" class="form-control" autofocus
+    required minlength="4" appForbiddenName="undefined"
+    [(ngModel)]="project.name" #projectName="ngModel" 
+    placeholder="New Project" 
+    pattern="[a-z][a-z0-9]{3,}([\/]?[a-z][a-z0-9]{3,})*" 
+    (keyup)="project.name = project.name.toLowerCase()"/>
+    <!-- (keyup.enter)="save()" removed, since it would allow to save projects that are invalid -->
+    
+  <button *ngIf="projectName && !projectName.invalid && !customerName || ( customerName && !customerName.invalid )" (click)="save()">Save</button> 
+    
+  <div class="error" *ngIf="error" [innerHTML]="error">{{error}}</div>
+
+  <div>
+    <div *ngIf="projectName && projectName.invalid && (projectName.dirty || projectName.touched)"
+        class="alert alert-danger">
+
+      <div *ngIf="projectName.errors.required">
+        Project Name is required.
+      </div>
+      <div *ngIf="projectName.errors.minlength">
+        Project Name must be at least 4 characters long.
+      </div>
+      <div *ngIf="projectName.errors.forbiddenName">
+        Project Name cannot be 'undefined'.
+      </div>
+      <div *ngIf="projectName.errors.pattern">
+        Project Name must start with a lowercase letter [a-z] and can consist of lowercase letters and/or numbers and/or "/" in between
+      </div>
+
+    </div>
+  </div>
+
+  <button (click)="goBack()">Back</button>
+  
+</div>

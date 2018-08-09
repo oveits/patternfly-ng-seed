@@ -21,6 +21,11 @@ export class NavComponent implements OnInit {
       title: 'Table View',
       iconStyleClass: 'fa fa-table',
       url: '/home/table'
+    },
+    {
+      title: 'Projects',
+      iconStyleClass: 'fa fa-table',
+      url: '/home/projects'
     }
   ];
 

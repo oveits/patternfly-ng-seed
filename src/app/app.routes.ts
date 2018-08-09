@@ -2,6 +2,7 @@ import {Routes} from '@angular/router';
 import {HomeComponent} from './home/home.component';
 import {CardComponent} from './card/card.component';
 import {TableComponent} from './table/table.component';
+import {ProjectsComponent} from './projects/projects.component';
 
 export const AppRoutes: Routes = [
   {
@@ -26,6 +27,14 @@ export const AppRoutes: Routes = [
         data: {
           breadcrumbs: true,
           text: 'Table'
+        }
+      },
+      {
+        path: 'projects',
+        component: ProjectsComponent,
+        data: {
+          breadcrumbs: true,
+          text: 'Projects'
         }
       }
     ]

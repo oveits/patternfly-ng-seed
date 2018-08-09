@@ -1,0 +1,22 @@
+<div *ngIf="project">
+
+  <h1>Service: {{project.name}}</h1>
+
+  <table style="width:100%">
+    <tr>
+      <th>Key</th><th>Value</th>
+    </tr>
+    <tr>
+      <td>ID</td><td>{{project.id}}</td>
+    </tr>
+    <tr>
+      <td>Instances</td><td>{{project.instances}}</td>
+    </tr>
+    <tr>
+      <td>Health</td><td>{{project.healthyness*100}}%</td>
+    </tr>
+  </table>
+
+  <button (click)="goBack()">Back</button>
+  
+</div>

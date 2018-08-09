@@ -1,0 +1,30 @@
+<!-- <h2><span *ngIf="customer">Customer > {{customer}} > </span> Projects</h2> -->
+<h2><span *ngIf="customer"> {{customer}} > </span>All Projects</h2>
+
+<!-- <button (click)="addProject()">Add New Project</button> -->
+<div *ngIf="addingProject">
+  <my-project-input (close)="close($event)" addingProject=true></my-project-input>
+</div>
+
+<ul class="projects">
+    <li (click)="addProject()">
+      + Add New Project 
+    </li>
+  <li *ngFor="let project of projects" (click)="onSelect(project)" [class.selected]="project === selectedProject">
+    <span class="project-element">
+      <span class="badge"><span *ngIf="project.customer && customer !== project.customer">{{project.customer}}: </span>{{project.name}}</span>
+    </span>
+    <button class="delete-button" (click)="deleteProject(project, $event)">Delete</button>
+  </li>
+</ul>
+
+<div *ngIf="null == projects">Loading...</div>
+
+<div class="error" *ngIf="error" [innerHTML]="error">{{error}}</div>
+
+<div *ngIf="selectedProject">
+  <h2>
+    {{selectedProject.name | uppercase}} is my Project
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>
