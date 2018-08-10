@@ -28,7 +28,7 @@ import { ProjectInputComponent } from './projects/project-input.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MarathonInterceptor } from './common/marathon.interceptor';
 import { MarathonAppInterceptor } from './containerservices/marathon-app.interceptor';
-import { ProjectInterceptor } from './projects/project.interceptor';
+import { ProjectMarathonInterceptor } from './projects/project-marathon.interceptor';
 import { MarathonFakeInterceptor } from './containerservices/marathon-fake.interceptor';
 import { MarathonProjectFakeInterceptor } from './projects/marathon-project-fake.interceptor';
 
@@ -59,10 +59,10 @@ import { MarathonProjectFakeInterceptor } from './projects/marathon-project-fake
   providers: [
     NotificationService,
     ProjectService,
-    { provide: HTTP_INTERCEPTORS, useClass: MarathonInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: MarathonAppInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ProjectInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: MarathonFakeInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: MarathonInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: MarathonAppInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ProjectMarathonInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useClass: MarathonFakeInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: MarathonProjectFakeInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
