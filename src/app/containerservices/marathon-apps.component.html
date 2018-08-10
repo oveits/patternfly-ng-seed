@@ -1,0 +1,33 @@
+<div *ngIf="marathonApps != (intervalBackoffTimer$$ | async | async); else loading"></div>
+
+<h2><span *ngIf="project"><a routerLink="/projects" routerLinkActive="active">All Projects</a> > "{{project}}" > Services </span></h2>
+
+<div *ngIf="addingMarathonApp">
+  <my-marathon-app-input (close)="close($event)" addingMarathonApp=true></my-marathon-app-input>
+</div>
+
+<ul class="marathonApps">
+    <li (click)="addMarathonApp()">+ Add New Service <span *ngIf="addingMarathonApp">
+    </span></li>
+  <li *ngFor="let marathonApp of marathonApps" (click)="onSelect(marathonApp)" [class.selected]="marathonApp === selectedMarathonApp">
+    <span class="marathonApp-element">
+      <span class="badge" [class.healthy]="marathonApp.healthyness === 1" [class.unhealthy]="marathonApp.healthyness === 0">{{marathonApp.name}}</span>
+      <span class="badge" *ngIf="marathonApp.project && project !== marathonApp.project">{{marathonApp.project}}</span>
+      <span >{{marathonApp.instances}}</span>
+      <button class="delete-button" (click)="deleteMarathonApp(marathonApp, $event)">Delete</button>
+    </span>
+  </li>
+</ul>
+
+<ng-template #loading>
+  Loading...
+</ng-template>
+
+<div class="error" *ngIf="error" [innerHTML]="error">{{error}}</div>
+
+<div *ngIf="selectedMarathonApp">
+  <h2>
+    {{selectedMarathonApp.name | uppercase}} is my Service
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>

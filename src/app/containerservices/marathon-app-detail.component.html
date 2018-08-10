@@ -1,0 +1,23 @@
+<div *ngIf="marathonApp">
+
+  <h2><span *ngIf="project"><a routerLink="/projects" routerLinkActive="active">All Projects</a> > "{{project}}" > <a routerLink="/projects/{{project}}/marathonapps/" routerLinkActive="active">Services</a> > </span>"<a href="http://195.201.17.1{{marathonApp.id}}">{{marathonApp.name}}</a>"</h2>
+
+
+  <table style="width:100%">
+    <tr>
+      <th>Key</th><th>Value</th>
+    </tr>
+    <tr>
+      <td>ID</td><td>{{marathonApp.id}}</td>
+    </tr>
+    <tr>
+      <td>Instances</td><td>{{marathonApp.instances}}</td>
+    </tr>
+    <tr>
+      <td>Health</td><td>{{marathonApp.healthyness*100}}%</td>
+    </tr>
+  </table>
+
+  <button (click)="goBack()">Back</button>
+  
+</div>
